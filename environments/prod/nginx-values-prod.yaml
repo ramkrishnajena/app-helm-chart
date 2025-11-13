@@ -1,4 +1,4 @@
-fullnameOverride: "nginx-a-prod"
+fullnameOverride: "nginx-prod"
 replicaCount: 3
 image:
   repository: nginx

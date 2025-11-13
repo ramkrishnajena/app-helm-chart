@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-uat
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://git.example.com/your-org/app-helm-chart.git'
+    targetRevision: HEAD
+    path: '.'
+    chart: nginx-app
+    helm:
+      valueFiles:
+        - environments/uat/nginx-a-values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
