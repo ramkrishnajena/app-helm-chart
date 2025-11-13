@@ -1,0 +1,12 @@
+fullnameOverride: "nginx-a-prod"
+replicaCount: 3
+image:
+  repository: nginx
+  tag: "1.21.6"
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+config:
+  index.html: |
+    <html><body><h1>nginx-a - PROD</h1></body></html>

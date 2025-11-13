@@ -1,0 +1,12 @@
+fullnameOverride: "nginx-b-uat"
+replicaCount: 1
+image:
+  repository: nginx
+  tag: "1.22.0"
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+config:
+  index.html: |
+    <html><body><h1>nginx-b - UAT</h1></body></html>
