@@ -11,7 +11,7 @@ spec:
     path: '.'                # point to chart root in the git repo
     helm:
       valueFiles:
-        - environments/prod/nginx-values-uat.yaml
+        - environments/uat/nginx-values-uat.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
