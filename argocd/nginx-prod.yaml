@@ -1,18 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-uat
+  name: nginx-prod
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/ramkrishnajena/app-helm-chart'
+    repoURL: 'https://github.com/ramkrishnajena/app-helm-chart'   # Git repo
     targetRevision: HEAD
-    path: '.'
-    chart: nginx-app
+    path: '.'                # point to chart root in the git repo
     helm:
       valueFiles:
-        - environments/uat/nginx-values-prod.yaml
+        - environments/prod/nginx-values-prod.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: prod
@@ -20,3 +19,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true    # optional: ArgoCD will create 'prod' if missing
