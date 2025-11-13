@@ -6,13 +6,13 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://git.example.com/your-org/app-helm-chart.git'
+    repoURL: 'https://github.com/ramkrishnajena/app-helm-chart'
     targetRevision: HEAD
     path: '.'
     chart: nginx-app
     helm:
       valueFiles:
-        - environments/uat/nginx-b-values.yaml
+        - environments/uat/nginx-values-prod.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
